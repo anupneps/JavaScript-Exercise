@@ -30,9 +30,16 @@ let myArr = [
   "2019-12-14",
   "2022-14-12",
 ];
+
 const fixDate = (array) => {
-  /* provide your code here */
+  const formattedArray = array.map((element) => {
+    let splitEl = element.split("-");
+    splitEl.sort((a, b) => parseInt(a, 10) - parseInt(b, 10)); // a>0 --> sort a afer b, a<0 --> sort a before b
+    return `${splitEl[1]}-${splitEl[0]}-${splitEl[2]}`;
+  });
+  return formattedArray;
 };
+
 let newArr = fixDate(myArr);
 console.log(newArr);
 
