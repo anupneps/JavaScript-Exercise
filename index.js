@@ -116,11 +116,49 @@ cost 14, profit 0.3 , tax 24% => expected price is 30.43
 */
 class Book {
   _title;
-  constructor(title, cost, profit) {}
+  _cost;
+  _profit;
+  _price;
+  constructor(title, cost, profit) {
+    validateBook(title, cost, profit);
+    this._title = title;
+    this._cost = cost;
+    this._profit = profit;
+    this._price = this._cost / (1 - this._profit);
+  }
+  get price() {
+    return this._price;
+  }
+  get profit() {
+    return this._price - this._cost;
+  }
+  set increasePrice(amount) {
+    this._price += amount;
+  }
 }
 
-class TaxableBook {
-  /* provide your code here */
+const validateBook = (title, cost, profit) => {
+  if (typeof title !== "string") {
+    throw "Title shoud be string!";
+  }
+  if (title === "") {
+    throw "Title invalid!";
+  }
+  if (cost < 0) {
+    throw "Cost must be positive integer!";
+  }
+  if (profit < 0 || profit >= 0.5) {
+    throw "Profit must be between 0 - 0.5 !";
+  }
+};
+
+class TaxableBook extends Book {
+  constructor(title, cost, profit, taxRate) {
+    super(title, cost, profit);
+    this.taxRate = taxRate;
+    this._price =
+      this._cost / (1 - this._profit) + (taxRate / 100) * this._price;
+  }
 }
 
 const book1 = new Book("The Power of Habits", 14, 0.3);
