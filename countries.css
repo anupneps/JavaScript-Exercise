@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.mainContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 2rem;
+    align-items: center;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.searchContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+#searchHolder {
+    display: flex;
+    margin-top: 20px;
+    border-radius: 10px;
+    justify-content: space-between;
+    width: fit-content;
+    padding: 10px;
+    background-color: rgb(225, 221, 221);
+}
+
+#searchHolder>input {
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 10px;
+    font-family: 'Ubuntu', sans-serif;
+    margin-right: 20px;
+}
+
+#searchBtn {
+    border: none;
+    outline: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-weight: bold;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.flag {
+    width: 200px;
+    height: 200px;
+    padding: 1em;
+}
+
+#countryInfo {
+    display: flex;
+    width: 400px;
+    padding: 1em;
+    border: 2px dashed black;
+    align-items: center;
+    display: none;
+}
+
+.cardDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#countryList {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    padding: 10px;
+    flex-wrap: wrap;
+    flex-grow: 1;
+}
+
+.countryCard {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    padding: 5px;
+    border: 1px solid black;
+    text-align: left;
+    margin: 10px;
+    width: fit-content;
+    flex-wrap: wrap;
+}
+
+.countryDetail>p {
+    margin-top: 10px;
+}
+
+.countryCardDetail {
+    display: flex;
+    flex-direction: column;
+    margin-left: 16px;
+}
+
+.countryCardDetail>h2,
+.countryDetail>h2 {
+    margin-bottom: 10px;
+}

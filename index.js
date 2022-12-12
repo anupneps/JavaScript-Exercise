@@ -70,12 +70,67 @@ console.log(timer);
 The data fetched from url should be displayed in index.html.
 */
 
+const btn = document.getElementById("searchBtn");
+const countryInfo = document.getElementById("countryInfo");
+const countryList = document.getElementById("countryList");
+const searchInput = document.getElementById("input");
+
+btn.addEventListener("click", () => {
+  const countryName = searchInput.value;
+  if (countryName === "") {
+    throw "Invalid country Name";
+  }
+  getSingleCountry(countryName);
+  countryInfo.style.display = "block";
+});
+
 const getAllCountries = () => {
   /* provide your code here */
+  fetch("https://restcountries.com/v2/all")
+    .then((response) => response.json())
+    .then((data) => displayCountryName(data));
 };
 
-const getSingleCountry = () => {
+const getSingleCountry = (country) => {
   /* provide your code here */
+  fetch("https://restcountries.com/v2/name/" + country)
+    .then((response) => response.json())
+    .then((data) => displaySingleCountry(data));
+};
+
+const displayCountryName = (data) => {
+  data.map((item) => {
+    const countryEl = document.createElement("div");
+    countryList.appendChild(countryEl);
+    countryEl.classList = "countryCard";
+    countryEl.innerHTML = `
+                <img src=${item.flags.svg} alt="flag-image" class="flag" />
+                <div class="countryCardDetail">
+                    <h2>${item.name}</h2>
+                    <p>Capital: ${item.capital}</p>
+                    <p>Population: ${item.population}</p>
+                    <p>Region: ${item.region}</p>
+                </div>
+            `;
+    return item;
+  });
+};
+
+const displaySingleCountry = (item) => {
+  const countryDetail = document.createElement("div");
+  countryInfo.appendChild(countryDetail);
+  countryDetail.classList = "cardDiv";
+  countryDetail.innerHTML = `
+  <div class = "countryDetail">
+  <h2> ${item[0].name}</h2>
+  <p>Capital:  ${item[0].capital}</p>
+  <p>Population: ${item[0].population}</p>
+  <p>Region: ${item[0].region}</p>
+  </div>
+  <div>
+  <img src= ${item[0].flag} alt="" class="flag" />
+  </div>
+`;
 };
 
 getAllCountries();
