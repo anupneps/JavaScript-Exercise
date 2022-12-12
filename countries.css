@@ -3,21 +3,30 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: rgb(233, 237, 243);
 }
 
 .mainContainer {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    margin: 2rem;
+    justify-content: space-between;
     align-items: center;
     font-family: 'Ubuntu', sans-serif;
+    background-color: rgb(148 163 184);
+    margin: 20px;
 }
 
 .searchContainer {
     display: flex;
     flex-direction: column;
     padding: 20px;
+    background-color: transparent;
+    width: 400px;
+    align-self: flex-start;
+}
+
+h1 {
+    background-color: transparent;
 }
 
 #searchHolder {
@@ -28,6 +37,7 @@
     width: fit-content;
     padding: 10px;
     background-color: rgb(225, 221, 221);
+    background-color: transparent;
 }
 
 #searchHolder>input {
@@ -51,7 +61,7 @@
 
 .flag {
     width: 200px;
-    height: 200px;
+    height: 150px;
     padding: 1em;
 }
 
@@ -77,6 +87,7 @@
     padding: 10px;
     flex-wrap: wrap;
     flex-grow: 1;
+    background-color: rgb(148 163 184);
 }
 
 .countryCard {
