@@ -4,11 +4,13 @@ from 0 to 100
  */
 
 const printNum = () => {
-  for (var i = 0; i <= 100; i++) {
-    console.log(i);
+  for (let i = 0; i <= 100; i++) {
+    setTimeout(() => {
+      console.log(i);
+    });
   }
 };
-setTimeout(printNum, 1000);
+printNum();
 
 /*
 2. Given the array below:
@@ -148,9 +150,7 @@ const generateNewFolderName = (existingFolders) => {
     existingFolders.includes(inputFolder) ||
     existingFolders.includes(`${inputFolder} (${existingFolders.length})`)
   ) {
-    return existingFolders.push(
-      inputFolder + " (" + existingFolders.length + ")"
-    );
+    return existingFolders.push(`${inputFolder} (${existingFolders.length})`);
   } else {
     return existingFolders.push(inputFolder);
   }
