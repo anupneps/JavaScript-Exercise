@@ -71,13 +71,14 @@ console.log(timer);
 - Write a function to find one country based on the search input
 The data fetched from url should be displayed in index.html.
 */
-
 const btn = document.getElementById("searchBtn");
 const countryInfo = document.getElementById("countryInfo");
 const countryList = document.getElementById("countryList");
 const searchInput = document.getElementById("input");
+const baseURL = "https://restcountries.com/v2/";
 
 btn.addEventListener("click", () => {
+  countryInfo.innerHTML = " ";
   const countryName = searchInput.value;
   if (countryName === "") {
     throw "Invalid country Name";
@@ -86,18 +87,19 @@ btn.addEventListener("click", () => {
   countryInfo.style.display = "block";
 });
 
-const getAllCountries = () => {
+const getAllCountries = async () => {
   /* provide your code here */
-  fetch("https://restcountries.com/v2/all")
-    .then((response) => response.json())
-    .then((data) => displayCountryName(data));
+  const response = await fetch(`${baseURL}all`);
+  const data = await response.json();
+  displayCountryName(data);
 };
+getAllCountries();
 
-const getSingleCountry = (country) => {
+const getSingleCountry = async (country) => {
   /* provide your code here */
-  fetch("https://restcountries.com/v2/name/" + country)
-    .then((response) => response.json())
-    .then((data) => displaySingleCountry(data));
+  const response = await fetch(`${baseURL}name/${country}`);
+  const data = await response.json();
+  displaySingleCountry(data);
 };
 
 const displayCountryName = (data) => {
@@ -134,8 +136,6 @@ const displaySingleCountry = (item) => {
   </div>
 `;
 };
-
-getAllCountries();
 
 /*
 5. Provide logic for function generateNewFolderName, which receive an array as argument. Everytime the function gets called,
